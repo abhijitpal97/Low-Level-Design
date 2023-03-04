@@ -32,7 +32,7 @@ pipeline {
 	stage('email notification') {
              steps {
                 mail bcc: '', body: '''Hi 
-                Welcome to Jenkins alert services.''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Update', to: 'abhijitpal97@yahoo.co.in'
+                Welcome to Jenkins alert services.''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job Complete', to: 'abhijitpal97@yahoo.co.in'
 	     }
 	 }
   }

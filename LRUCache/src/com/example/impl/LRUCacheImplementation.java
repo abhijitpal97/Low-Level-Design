@@ -56,13 +56,10 @@ public class LRUCacheImplementation implements CacheInterface , CacheGenericInte
 				map.remove(tail.prev.msg.getSender());
 				remove(tail.prev);
 			}
-			else
-			{
-				LRUNode newNode = new LRUNode();
-				newNode.msg = msg;
-				map.put(msg.getSender(), newNode);
-				add(newNode);
-			}
+			LRUNode newNode = new LRUNode();
+			newNode.msg = msg;
+			map.put(msg.getSender(), newNode);
+			add(newNode);
 		}
 
 	}

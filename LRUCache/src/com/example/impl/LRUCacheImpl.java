@@ -70,8 +70,12 @@ public class LRUCacheImpl implements LRUCacheInterface,LRUNodeInteface{
 	public List<MessageBean> getAllCache() {
 		// TODO Auto-generated method stub
 		List<MessageBean> list = new ArrayList<>();
-		for(Map.Entry<Integer, LRUNode> m1 : map.entrySet()) list.add(m1.getValue().message);
-
+		LRUNode node = head.next;
+		while(node.next != null)
+		{
+			list.add(node.message);
+			node = node.next;
+		}
 		return list;
 	}
 

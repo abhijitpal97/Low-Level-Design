@@ -1,7 +1,5 @@
 package com.example.driver;
 
-import java.util.List;
-
 import com.example.impl.LRUCacheImpl;
 import com.example.pojo.MessageBean;
 
@@ -21,14 +19,13 @@ public class Main {
 		impl.setCache(new MessageBean(7, "Aman"));
 		impl.setCache(new MessageBean(8, "Neha"));
 		System.out.println("Cache for Id - 3"+impl.getCache(3));
-		
+		System.out.println("Caches" + impl.getAllCache());
 		System.out.println("Cache for Id - 7"+impl.getCache(7));
 		impl.setCache(new MessageBean(7, "Nida"));
 		System.out.println("Cache for Id - 7"+impl.getCache(7));
 		
-		List<MessageBean> caches = impl.getAllCache();
 		
-		System.out.println("Caches" + caches);
+		System.out.println("Caches" + impl.getAllCache());
 	}
 
 }

@@ -1,0 +1,12 @@
+In Scope - 
+Owner Can Add and Remove Cars
+Owner can update Car Fare
+Customer Can book Car based on CarType
+Customer Can get Booking History
+Driver Can End The Trip
+
+Not In Scope as of Now
+Handling Price and Transaction
+Customer Details log
+Driver start Trip based on Verification
+Customer Searching Car based on requirement

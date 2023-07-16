@@ -1,0 +1,14 @@
+In Scope - 
+
+Add Book
+Remove Book
+Update Book Count - Add And Remove
+Book Assignment to Consumer
+Search Book By Author And Genere
+
+Not In Scope - 
+Different Version Management of Same Book
+Getting History/Audit of the Book
+Handle the Consumer Details in the Library System
+Manage the Issue Date and Delay Penalty
+Managing the Reminder for Return in Case delay in return.`

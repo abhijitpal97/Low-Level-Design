@@ -1,0 +1,127 @@
+Actions and User->
+
+// *************************************************//
+Consumer
+	PlanActivity
+	ViewPastActivity
+	Subsription
+	Payment
+
+Admin
+	ManageSubsription
+	ManagePlan
+	UpdateNewInformation
+	
+System
+	TrackActivity
+
+// *************************************************//
+class App
+{
+	List<Customer> customers;
+	
+	String getAuthentication(User user);
+}
+
+class User 
+{	
+	String userId;
+	Account account;
+	boolean isActive;
+	Date createDate;
+	List<Plan> plans;
+}
+
+class Account
+{
+	String userName;
+	String password;
+}
+
+class Admin extends User
+{
+	updatePlan(int planId,Plan plan);
+	addPlan(Plan plan);
+	deletePlan(int planId);
+	
+	updateInformation(int infoId,Information information);
+	addInformation(Information information);
+	deleteInformation(int infoId);
+	
+}
+
+class Customer extends User
+{
+	Subscription subcription;
+	List<HistoricActivity> history;
+	List<Activity> scheduleActivity;
+	List<Information> informations;
+	List<Bill> bill;
+	
+	makePayment(Payment payment);
+}
+
+class Plan
+{
+	int planId;
+	String planName;
+	double amount;
+	Subscription subsription;
+}
+
+class Subsription
+{
+	int subsriptionId;
+	String subsriptionName;
+	List<Benifit> benifit;	
+}
+
+class Benifit
+{
+	int courseId;
+	boolean isHealthCheck;
+	boolean isFreeFoodHabits;
+}
+
+class Information
+{
+	int infoId;
+	String genre;
+	String Description;
+}
+
+class HistoricActivity
+{
+	int activityId;
+	TimeStamp startTime;
+	TimeStamp EndTime;
+	long caloriesBurn;
+}
+
+class Activity
+{
+	int Id;
+	List<Action> action;
+}
+
+class Action
+{
+	int day;
+	long time;
+}
+
+class Bill
+{
+	int billId;
+	double amount;
+	Date startDate;
+	Date endDate;
+}
+
+class Payment
+{
+	int paymentId;
+	double amount;
+	Plan plan;
+	
+}

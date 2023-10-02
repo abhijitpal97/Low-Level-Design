@@ -1,0 +1,79 @@
+class ParkingLot
+{
+	List<Parking> parkings;
+	List<Customer> customers;
+}
+
+class User
+{
+	int userId;
+	Account account;
+	
+	editParking(Parking park);
+}
+
+class Account
+{
+	String userName;
+	String password;
+} 
+
+class Customer extends User
+{
+	Parking park;
+	Bill bill;
+	Payment payment;
+	
+	boolean hasParked(Vechile vehicle);
+	boolean removePark(Vehicle vehicle);
+}
+
+class Admin extends extends User
+{
+	List<Parking> parking;
+	
+	addParking(Parking park);
+	deleteParking(int parkId);
+}
+
+class Parking
+{
+	int parkId;
+	Type type;
+	ParkStatus status;
+	Vehicle vehicle;
+}
+
+enum ParkStatus
+{
+	"BLOCKED", "FREE" , "UNDERMAINTAIN";
+}
+
+enum Type
+{
+	"TWO","FOUR";
+}
+
+class Vehicle
+{
+	int vehicleId;
+	String vehicleModel;
+	Type type;
+	Timestamp parkTime;
+	Timestamp parkEnd;
+}
+
+class Bill
+{
+	int billId;
+	Customer customer;
+	Vehicle vehicle;
+}
+
+class Payment
+{
+	int paymetnId;
+	
+	double calculatePayment(Vehicle vehicle);
+	boolean makePayment(Vehicle vehicle , double amount);
+}

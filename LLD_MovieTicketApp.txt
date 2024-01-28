@@ -1,0 +1,146 @@
+class MovieApp
+{
+	List<CinemaHall> halls;	
+	
+	List<CinemaHall> getHalls(String city) {}
+	List<Movie> getMovies(String city , Date date) {}
+}
+
+class CinemaHall
+{
+	int hallId;
+	String hallName;
+	Address address
+	List<Screen> shows;
+	
+	List<Screen> getShows(hallId , Date date) {}
+	
+}
+
+class Screen
+{
+	int screenId;
+	List<Seat> seats;
+	List<Show> shows;
+}
+
+class Seat
+{
+	int seatId;
+	int row;
+	int col;
+	SeatType seatType;
+	boolean isAvailable;
+	double price;
+}
+
+enum SeatType
+{
+	RECLINER,
+	SEATING
+}
+
+class Show
+{
+	int showId;
+	Long startTime;
+	Long endTime;
+	Movie movie;
+}
+
+class Movie
+{
+	String movieName;
+	Long runTime;
+	String Description;
+}
+
+
+class User
+{
+	int userId;
+	String userName;
+	int userSecurityNumber;
+	Address address;
+}
+
+class Address
+{
+	int addressId;
+	String streetName;
+	String location; 
+	String city;
+	String state;
+	int zip;
+}
+
+
+class Admin extends User
+{
+	CinemaHall addCinemaHall(CinemaHall hall) {}
+	Screen addScreen(CinemaHall cinemaHall , Screen screen) {}
+	Screen removeScreen(CinemaHall cinemaHall , Screen screen) {}
+	Show addShow(Screen screen , Show show) {}
+	Show removeShow(Screen screen , Show show) {}
+}
+
+class Customer extends User
+{
+	List<Booking> tickets;
+	List<Reviews> reviews;
+	
+	Booking bookTicket(CinemaHall hall, Screen screen , Show show) {}
+	Booking cancelTicket(CinemaHall hall, Screen screen , Show show) {}
+	Payment makePayment(CinemaHall hall, Screen screen , Show show) {}
+}
+
+class Reviews
+{
+	int reviewId;
+	String reviews;
+	Movie movie;
+}
+
+class Booking
+{
+	int ticketId;
+	Customer customer;
+	CinemaHall hall;
+	Screen screen;
+	Show show;
+}
+
+
+class Payment
+{
+	int paymentId;
+	double amount;
+	PaymentStatus paymentStatus;
+	PaymentDetails paymentDetails;
+	
+	double calculateAmount(Vehicle vehicle) {}
+}
+
+class PaymentDetails
+{
+	Vehicle vehicle;
+	PaymentType paymentType;
+	String paymentSource;
+	TimeStamp time;
+}
+
+enum PaymentType
+{
+	CARD,
+	CASH,
+	UPI,
+	FASTTRACK
+}
+
+enum PaymentStatus
+{
+	PENDING,
+	COMPLETED,
+	WAITING,
+	REJECTED
+}

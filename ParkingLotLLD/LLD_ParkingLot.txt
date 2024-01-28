@@ -1,79 +1,124 @@
 class ParkingLot
 {
-	List<Parking> parkings;
-	List<Customer> customers;
-}
-
-class User
-{
-	int userId;
-	Account account;
+	List<Floor> list;
 	
-	editParking(Parking park);
+	ParkingAttendee alloteParkingAttendee(Floor floor , ParkingAttendee attendee) {}
+	ParkingAttendee removeParkingAttendee(Floor floor , ParkingAttendee attendee) {}
+	ParkingAttendee changeParkingAttendee(Floor floor , ParkingAttendee attendee) {}
 }
 
-class Account
+class Floor
 {
-	String userName;
-	String password;
-} 
-
-class Customer extends User
-{
-	Parking park;
-	Bill bill;
-	Payment payment;
-	
-	boolean hasParked(Vechile vehicle);
-	boolean removePark(Vehicle vehicle);
-}
-
-class Admin extends extends User
-{
+	int floorId;
 	List<Parking> parking;
-	
-	addParking(Parking park);
-	deleteParking(int parkId);
+	List<ParkingAttendee> attendee;
 }
 
 class Parking
 {
-	int parkId;
-	Type type;
-	ParkStatus status;
+	int parking Id;
+	ParkingType parkingType;
+	ParkingStatus parkingStatus;
 	Vehicle vehicle;
 }
 
-enum ParkStatus
+enum ParkingType
 {
-	"BLOCKED", "FREE" , "UNDERMAINTAIN";
+	TWO_WHEELER,
+	FOUR_WHEELER,
+	OTHER,
+	EMPLOYEE_PARKING
 }
 
-enum Type
+enum ParkingStatus
 {
-	"TWO","FOUR";
+	AVAILABLE,
+	RESERVED,
+	OCCUPIED,
+	UNDER_MAINTAINANCE
 }
 
 class Vehicle
 {
-	int vehicleId;
-	String vehicleModel;
-	Type type;
-	Timestamp parkTime;
-	Timestamp parkEnd;
+	int vehicleID;
+	String vehicleNumber;
+	String ownerName;
+	TimeStamp inTime;
+	TimeStamp outTime;
+	Bill bill;
+	Payment payment;
+}
+
+
+class User
+{
+	int userId;
+	String userName;
+	int userSecurityNumber;
+	Address address;
+}
+
+class Address
+{
+	int addressId;
+	String streetName;
+	String location; 
+	String city;
+	String state;
+	int zip;
+}
+
+class Admin extends User
+{
+	Floor addFloor(Floor floor) {}
+	Floor removeFloor(Floor floor){}
+	Floor removeParking(Floor floor , int parkingId) {}
+}
+
+class ParkingAttendee extends User
+{
+	Vehicle parkVehicle(Vehicle vehicle) {}
+	Vehicle removeVehicle(Vehicle vehicle) {}
 }
 
 class Bill
 {
 	int billId;
-	Customer customer;
 	Vehicle vehicle;
+	PaymentType;
+	Timestamp paymentType;
 }
 
 class Payment
 {
-	int paymetnId;
+	int paymentId;
+	double amount;
+	PaymentStatus paymentStatus;
+	PaymentDetails paymentDetails;
 	
-	double calculatePayment(Vehicle vehicle);
-	boolean makePayment(Vehicle vehicle , double amount);
+	double calculateAmount(Vehicle vehicle) {}
+}
+
+class PaymentDetails
+{
+	Vehicle vehicle;
+	PaymentType paymentType;
+	String paymentSource;
+	TimeStamp time;
+}
+
+enum PaymentType
+{
+	CARD,
+	CASH,
+	UPI,
+	FASTTRACK
+}
+
+enum PaymentStatus
+{
+	PENDING,
+	COMPLETED,
+	WAITING,
+	REJECTED
 }
